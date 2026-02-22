@@ -51,7 +51,7 @@ const Services = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setStartIndex((prev) => (prev + 1) % services.length);
-    }, 3000);
+    }, 3500);
     return () => clearInterval(interval);
   }, []);
 
@@ -60,42 +60,54 @@ const Services = () => {
   });
 
   const positions = [
-    { x: -480, scale: 0.7, zIndex: 10, rotate: -6 },
-    { x: -240, scale: 0.9, zIndex: 20, rotate: -3 },
-    { x: 0, scale: 1.05, zIndex: 30, rotate: 0 },
-    { x: 240, scale: 0.9, zIndex: 20, rotate: 3 },
-    { x: 480, scale: 0.7, zIndex: 10, rotate: 6 },
+    { x: -420, scale: 0.75, opacity: 0.4, zIndex: 10 },
+    { x: -220, scale: 0.9, opacity: 0.7, zIndex: 20 },
+    { x: 0, scale: 1.08, opacity: 1, zIndex: 30 },
+    { x: 220, scale: 0.9, opacity: 0.7, zIndex: 20 },
+    { x: 420, scale: 0.75, opacity: 0.4, zIndex: 10 },
   ];
 
   return (
     <section
       id="services"
-      className="relative w-full py-16 md:py-20 bg-black font-serif overflow-hidden"
+      className="relative w-full py-20 bg-black font-serif overflow-hidden"
     >
-      <div className="text-center mb-8">
+      {/* Soft background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#D4AF37]/10 blur-[120px] rounded-full"></div>
+
+      {/* Title */}
+      <div className="text-center mb-14 relative z-10">
         <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-[#D4AF37] via-[#F5D77A] to-[#D4AF37] bg-clip-text text-transparent">
           Our Services
         </h2>
+        <div className="w-20 h-[2px] bg-[#D4AF37] mx-auto mt-4"></div>
       </div>
 
-      {/* Desktop Carousel */}
+      {/* Desktop Premium Carousel */}
       <div className="hidden md:flex relative justify-center items-center h-[550px]">
         {visibleCards.map((service, i) => (
           <motion.div
             key={service.title}
             animate={positions[i]}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            whileHover={{ y: -6, scale: 1.02 }}
-            className="absolute w-[280px] h-[400px] p-5 rounded-3xl bg-gradient-to-br from-[#D4AF37]/90 via-[#F5D77A]/90 to-[#D4AF37]/90 shadow-[0_8px_35px_rgba(212,175,55,0.35)] border border-[#D4AF37]/50 flex flex-col justify-start text-black cursor-pointer"
+            transition={{ duration: 0.9 }}
+            whileHover={{ y: -10 }}
+            className="absolute w-[300px] h-[420px] p-6 rounded-3xl 
+            bg-gradient-to-br from-[#D4AF37]/95 via-[#F5D77A]/95 to-[#D4AF37]/95 
+            shadow-[0_15px_50px_rgba(212,175,55,0.35)]
+            border border-[#D4AF37]/60
+            backdrop-blur-md
+            text-black cursor-pointer"
           >
-            <div className="flex flex-col gap-3">
-              <div className="flex items-start gap-2">
-                <GiCheckMark className="text-black text-3xl mt-1" />
+            <div className="flex flex-col gap-4">
+              <div className="flex items-start gap-3">
+                <div className="bg-black text-[#D4AF37] p-2 rounded-full">
+                  <GiCheckMark className="text-xl" />
+                </div>
                 <h3 className="text-lg font-semibold leading-snug">
                   {service.title}
                 </h3>
               </div>
-              <p className="text-sm leading-relaxed mt-1">
+              <p className="text-sm leading-relaxed text-black/80">
                 {service.description}
               </p>
             </div>
@@ -103,22 +115,32 @@ const Services = () => {
         ))}
       </div>
 
-      {/* Mobile Scrollable Cards with Margin */}
-      <div className="md:hidden flex flex-col gap-6 px-4">
+      {/* Mobile Premium Cards */}
+      <div className="md:hidden flex flex-col gap-6 px-5 relative z-10">
         {services.map((service, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: idx * 0.1 }}
-            className="bg-gradient-to-br from-[#D4AF37]/90 via-[#F5D77A]/90 to-[#D4AF37]/90 p-4 rounded-3xl shadow-md flex flex-col gap-2 text-black mx-2"
+            transition={{ duration: 0.6, delay: idx * 0.08 }}
+            whileTap={{ scale: 0.98 }}
+            className="relative overflow-hidden rounded-3xl p-5 
+            bg-gradient-to-br from-[#D4AF37] via-[#F5D77A] to-[#D4AF37]
+            shadow-lg"
           >
-            <div className="flex items-start gap-2">
-              <GiCheckMark className="text-black text-2xl mt-1" />
-              <h3 className="text-base font-semibold">{service.title}</h3>
+            <div className="flex items-start gap-3">
+              <div className="bg-black text-[#D4AF37] p-2 rounded-full">
+                <GiCheckMark className="text-lg" />
+              </div>
+              <h3 className="text-base font-semibold text-black">
+                {service.title}
+              </h3>
             </div>
-            <p className="text-xs leading-relaxed">{service.description}</p>
+
+            <p className="text-sm mt-3 text-black/80 leading-relaxed">
+              {service.description}
+            </p>
           </motion.div>
         ))}
       </div>
