@@ -86,8 +86,26 @@ const Founder = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+        {/* Career Summary Paragraph - Animated & Stylish */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mt-8 md:mt-12 max-w-3xl mx-auto relative text-center md:text-left p-6 md:p-8 rounded-xl bg-black/50 border border-[#E6C76A]/40 shadow-[0_10px_30px_rgba(230,199,106,0.5)] overflow-hidden"
+        >
+          {/* Subtle animated golden glow */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#E6C76A]/20 to-transparent rounded-xl animate-pulse-slow pointer-events-none"></div>
 
+          <p className="text-[#E6C76A] text-base md:text-lg leading-relaxed font-semibold tracking-wide relative z-10">
+            Throughout her career, Dr. Emebet has been closely associated with
+            institutional reform, developmental finance, and initiatives aimed
+            at promoting inclusive economic growth. She is widely recognized for
+            her strategic vision, transformational leadership, and longstanding
+            contribution to strengthening Ethiopia’s financial sector.
+          </p>
+        </motion.div>
+      </div>
       {/* Major Achievements */}
       <div className="mt-12 md:mt-16">
         <h2 className="text-2xl md:text-4xl font-bold text-[#E6C76A] text-center mb-8">
