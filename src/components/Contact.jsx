@@ -68,7 +68,7 @@ const Contact = () => {
         {/* Bottom Gold Banner */}
         <div className="mt-12 border border-[#E6C76A]/30 rounded-3xl py-4 px-4 bg-[#E6C76A]/20 backdrop-blur-sm">
           <p className="text-base md:text-lg font-serif">
-            Marmik Consult PLC — Unlocking our Client’s Potential Through Agile
+            MARMIK CONSULT LTD — Unlocking our Client’s Potential Through Agile
             Transformation
           </p>
         </div>

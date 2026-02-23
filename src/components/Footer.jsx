@@ -27,7 +27,7 @@ const Footer = () => {
           className="flex flex-col gap-4"
         >
           <h2 className="text-3xl md:text-4xl font-bold tracking-wide">
-            Marmik Consult PLC
+            MARMIK CONSULT LTD
           </h2>
 
           <div className="w-16 h-[2px] bg-gradient-to-r from-[#E6C76A] to-yellow-400" />

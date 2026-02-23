@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { BsPersonFill } from "react-icons/bs";
+
 import { MdWork } from "react-icons/md";
 import { GiLaurelsTrophy } from "react-icons/gi";
 
@@ -41,9 +41,14 @@ const Founder = () => {
         className="flex flex-col md:flex-row overflow-hidden rounded-xl shadow-[0_10px_30px_rgba(230,199,106,0.5)]"
       >
         {/* Left Golden Panel */}
-        <div className="w-full md:w-1/4 bg-[#E6C76A] flex items-center justify-center p-8 relative">
+        <div className="w-full md:w-1/4 bg-[#E6C76A] flex items-center justify-center p-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-[#E6C76A]/20 blur-xl rounded-l-xl"></div>
-          <BsPersonFill className="text-black text-6xl md:text-7xl z-10" />
+
+          <img
+            src="/images/founder.jpg"
+            alt="Dr. Emebet Melese Zeleke"
+            className="relative z-10 w-full h-full object-cover rounded-l-xl shadow-2xl"
+          />
         </div>
 
         {/* Right Black Panel */}
