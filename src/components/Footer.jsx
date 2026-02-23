@@ -173,7 +173,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="relative mt-16 border-t border-[#E6C76A]/20 pt-6 text-center text-sm text-[#E6C76A]/60">
-        © {new Date().getFullYear()} Marmik Consult PLC — Unlocking Potential
+        © {new Date().getFullYear()} MARMIK CONSULT LTD — Unlocking Potential
         Through Agile Transformation
       </div>
     </footer>

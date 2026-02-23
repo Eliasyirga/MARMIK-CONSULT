@@ -13,7 +13,7 @@ const LoadingSpinner = () => {
 
       {/* Company Name */}
       <h2 className="text-[#D4AF37] font-serif text-xl md:text-2xl tracking-widest mb-6">
-        MARMIK CONSULT PLC
+        MARMIK CONSULT LTD
       </h2>
 
       {/* Luxury Loading Bar */}
