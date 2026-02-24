@@ -27,7 +27,7 @@ const Footer = () => {
           className="flex flex-col gap-4"
         >
           <h2 className="text-3xl md:text-4xl font-bold tracking-wide">
-            MARMIK CONSULT LTD
+            MARMIK CONSULT PLC
           </h2>
 
           <div className="w-16 h-[2px] bg-gradient-to-r from-[#E6C76A] to-yellow-400" />
@@ -173,7 +173,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="relative mt-16 border-t border-[#E6C76A]/20 pt-6 text-center text-sm text-[#E6C76A]/60">
-        © {new Date().getFullYear()} MARMIK CONSULT LTD — Unlocking Potential
+        © {new Date().getFullYear()} MARMIK CONSULT PLC — Unlocking Potential
         Through Agile Transformation
       </div>
     </footer>

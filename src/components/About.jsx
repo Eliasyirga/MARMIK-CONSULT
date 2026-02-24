@@ -26,7 +26,7 @@ const About = () => {
           </h2>
 
           <p className="text-base md:text-lg lg:text-xl text-[#E6C76A] mb-6 leading-relaxed max-w-3xl">
-            MC LTD is a strategy and organizational transformation firm founded
+            MC PLC is a strategy and organizational transformation firm founded
             to strengthen institutions and drive sustainable performance.
             Established and led by Dr. Emebet Melese Zeleke (PhD), the firm is
             built on deep executive experience, institutional reform expertise,
