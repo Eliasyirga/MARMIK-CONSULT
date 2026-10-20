@@ -1,96 +1,126 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const Contact = () => {
+  // Same display + body typefaces used across the site
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap";
+    document.head.appendChild(link);
+    return () => document.head.removeChild(link);
+  }, []);
+
+  const items = [
+    {
+      icon: <Mail size={22} />,
+      title: "Contact Us",
+      desc: "info@marmikconsult.com",
+    },
+    {
+      icon: <Phone size={22} />,
+      title: "Call Us",
+      desc: "+251 911 690 032",
+    },
+    {
+      icon: <MapPin size={22} />,
+      title: "Visit Us",
+      desc: "Addis Ababa, Ethiopia",
+    },
+  ];
+
   return (
     <section
-      id="contact" // <-- Add this line to connect with header link
-      className="relative text-[#E6C76A] py-20 px-4 md:px-12 overflow-hidden
-                 bg-cover bg-center bg-no-repeat"
+      id="contact"
+      className="relative py-20 md:py-28 px-4 md:px-12 overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: "url('/images/partner.jpg')",
+        fontFamily: "'Inter', sans-serif",
       }}
     >
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70 pointer-events-none" />
+      {/* Light navy scrim — keeps the photo visible instead of washing it out */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E17]/70 via-[#0A0E17]/35 to-[#0A0E17]/75 pointer-events-none" />
 
-      {/* Subtle Gold Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(230,199,106,0.08),_transparent_70%)] pointer-events-none" />
+      {/* Subtle gold glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(201,162,39,0.1),_transparent_70%)] pointer-events-none" />
 
-      <div className="relative max-w-5xl mx-auto text-center">
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
         {/* Header */}
-        <h2 className="text-4xl md:text-6xl font-serif mb-4 animate-fadeIn">
-          Partner With Us
-        </h2>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2
+            className="text-4xl md:text-6xl mb-5 text-[#F3F4F8] drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]"
+            style={{ fontFamily: "'Fraunces', serif", fontWeight: 500 }}
+          >
+            Partner With <span className="text-[#E8C97A]">Us</span>
+          </h2>
+          <div className="h-px w-16 bg-[#C9A227] mx-auto mb-7" />
+        </motion.div>
 
-        <div className="w-20 h-[2px] bg-gradient-to-r from-[#E6C76A] to-yellow-400 mx-auto mb-6" />
-
-        <p className="text-lg md:text-xl mb-12 animate-fadeIn delay-200">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="text-lg md:text-xl mb-14 text-[#C3C9D6] drop-shadow-[0_1px_10px_rgba(0,0,0,0.6)]"
+        >
           Let's unlock your organization's full potential together
-        </p>
+        </motion.p>
 
         {/* Contact Info Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {[
-            {
-              icon: <Mail size={24} />,
-              title: "Contact Us",
-              desc: "info@marmikconsult.com",
-            },
-            {
-              icon: <Phone size={24} />,
-              title: "Call Us",
-              desc: "+251 911 690 032",
-            },
-            {
-              icon: <MapPin size={24} />,
-              title: "Visit Us",
-              desc: "Addis Ababa, Ethiopia",
-            },
-          ].map((item, idx) => (
-            <div
+          {items.map((item, idx) => (
+            <motion.div
               key={idx}
-              className="relative border border-[#E6C76A]/30 
-                         rounded-3xl p-6 bg-black/50 backdrop-blur-sm
-                         hover:shadow-[0_0_40px_rgba(230,199,106,0.5)]
-                         transform hover:-translate-y-1 transition-all duration-500"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.12 }}
+              whileHover={{ y: -4 }}
+              className="relative border border-white/[0.1] rounded-2xl p-7
+                         bg-[#0A0E17]/70 backdrop-blur-md
+                         hover:border-[#C9A227]/40
+                         transition-colors duration-300"
             >
-              <div className="flex justify-center mb-3 text-[#E6C76A]">
-                {item.icon}
+              <div className="flex justify-center mb-4">
+                <div className="w-11 h-11 bg-[#C9A227]/10 border border-[#C9A227]/30 rounded-lg flex items-center justify-center text-[#C9A227]">
+                  {item.icon}
+                </div>
               </div>
 
-              <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
-              <p className="text-[#E6C76A]/80 text-sm">{item.desc}</p>
-            </div>
+              <h3 className="text-[11px] uppercase tracking-[0.28em] text-[#9AA3B8] font-semibold mb-2">
+                {item.title}
+              </h3>
+              <p className="text-[#F3F4F8] text-base font-medium">
+                {item.desc}
+              </p>
+            </motion.div>
           ))}
         </div>
 
-        {/* Bottom Gold Banner */}
-        <div className="mt-12 border border-[#E6C76A]/30 rounded-3xl py-4 px-4 bg-[#E6C76A]/20 backdrop-blur-sm">
-          <p className="text-base md:text-lg font-serif">
-            MARMIK CONSULT PLC — Unlocking our Client’s Potential Through Agile
-            Transformation
+        {/* Bottom Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="border border-[#C9A227]/25 rounded-2xl py-5 px-6 bg-[#0A0E17]/70 backdrop-blur-md"
+        >
+          <p
+            className="text-base md:text-lg text-[#F3F4F8]"
+            style={{ fontFamily: "'Fraunces', serif", fontWeight: 500 }}
+          >
+            <span className="text-[#E8C97A]">MARMIK CONSULT PLC</span> —
+            Unlocking our Client’s Potential Through Agile Transformation
           </p>
-        </div>
+        </motion.div>
       </div>
-
-      {/* Animations */}
-      <style jsx>{`
-        .animate-fadeIn {
-          opacity: 0;
-          transform: translateY(12px);
-          animation: fadeInUp 0.8s forwards;
-        }
-        .animate-fadeIn.delay-200 {
-          animation-delay: 0.2s;
-        }
-        @keyframes fadeInUp {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </section>
   );
 };

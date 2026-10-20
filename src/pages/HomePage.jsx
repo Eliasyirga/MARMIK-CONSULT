@@ -8,6 +8,7 @@ import Education from "../components/Education";
 import VisionMission from "../components/VisionMission"; // ✅ Import VisionMission
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import Gallery from "../components/Gallery";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <Education />
       <VisionMission /> {/* ✅ Use the correct component */}
       <Services />
+      <Gallery />
       <Contact />
       <Footer />
     </>
